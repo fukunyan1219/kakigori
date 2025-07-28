@@ -52,14 +52,13 @@ document.addEventListener('DOMContentLoaded', () => {
       updateTotal();
     });
 
-    subBtn.addEventListener('click', () => {
-      const current = Number(input.value);
-      if (current > 0) {
-        input.value = current - 1;
-        updateTotal();
-      }
-    });
+     subBtn.addEventListener('click', () => {
+    const current = Number(input.value);
+    input.value = current - 1; // マイナスも許可
+    updateTotal();
+  });　
 
+    
     input.addEventListener('input', () => {
       updateTotal();
     });
