@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ➕ 各商品の加算ボタンと手入力
   items.forEach(item => {
-    const button = item.querySelector('.count-btn');
+    const button = item.querySelector('.add-btn');
     const input = item.querySelector('.count-input');
 
     button.addEventListener('click', () => {
