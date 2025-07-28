@@ -75,9 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
       savePayment(total);
       resetInputs();
       alert('決済完了しました！');
-    } else {
-      alert('商品を追加してください！');
-    }
+    } 
   });
 
   // リセットボタン（確認ダイアログ付き）
