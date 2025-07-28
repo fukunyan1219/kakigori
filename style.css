@@ -16,27 +16,26 @@ body {
 }
 
 .info {
-  margin: 10px 0 5px 0;
+  margin: 10px 0 10px 0;
   font-size: 16px;
 }
 
-
-.add-btn, .action-btn {
+.btn-group{
   display:inline-block;
-  font-size: 18px;
   padding: 15px;
   margin-bottom:10px;
-  background-color: rgb(63, 63, 63);
-  color: white;
+  font-size: 18px;
   border: none;
   border-radius: 10px;
+  color: white;
+}
+
+.add-btn, .action-btn {
+  background-color: rgb(63, 63, 63);
 }
 
 .sub-btn{
-  display:inline-block;
-  padding:15px;
   background-color:rgb(66, 66, 150);
-  color:white;
 }
 
 .count-input {
@@ -47,10 +46,6 @@ body {
   margin-bottom: 10px;
 }
 
-.info input{
-  transfprm:scale(3.0);
-  margin-bottom:10px;
-}
 
 .grand-total {
   font-size: 18px;
