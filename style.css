@@ -45,8 +45,8 @@ body {
 }
 
 button .action-btn{
-  display:flex;
-  padding:15px;
+  display:block;
+  padding:20px;
   border-radius: 10px;
   border:none;
 }
