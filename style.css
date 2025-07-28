@@ -34,7 +34,7 @@ body {
 
 .sub-btn{
   display:inline-block;
-  padding:15p;
+  padding:15px;
   background-color:rgb(66, 66, 150);
   color:white;
 }
@@ -48,7 +48,8 @@ body {
 }
 
 .info input{
-  transfprm:scale(2.0);
+  transfprm:scale(3.0);
+  margin-bottom:10px;
 }
 
 .grand-total {
