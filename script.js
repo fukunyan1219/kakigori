@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const cashTotalEl = document.getElementById('cashTotal');
   const paypayTotalEl = document.getElementById('paypayTotal');
 
+  // 合計計算
   function updateTotal() {
     let grandTotal = 0;
     items.forEach(item => {
@@ -18,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     grandTotalEl.textContent = grandTotal;
   }
 
+  // 売上保存
   function savePayment(grandTotal) {
     const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
     const key = paymentMethod === 'cash' ? 'cashTotal' : 'paypayTotal';
@@ -27,11 +29,13 @@ document.addEventListener('DOMContentLoaded', () => {
     updatePaymentDisplay();
   }
 
+  // 売上表示
   function updatePaymentDisplay() {
     cashTotalEl.textContent = localStorage.getItem('cashTotal') || 0;
     paypayTotalEl.textContent = localStorage.getItem('paypayTotal') || 0;
   }
 
+  // 入力リセット
   function resetInputs() {
     items.forEach(item => {
       const input = item.querySelector('.count-input');
@@ -41,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     grandTotalEl.textContent = '0';
   }
 
+  // 各＋ボタン／手入力イベント
   items.forEach(item => {
     const button = item.querySelector('.count-btn');
     const input = item.querySelector('.count-input');
@@ -55,14 +60,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // 決済ボタンイベント
   checkoutBtn.addEventListener('click', () => {
     const total = Number(grandTotalEl.textContent);
     if (total > 0) {
       savePayment(total);
       resetInputs();
+    } else {
+      alert("商品を追加してください！");
     }
   });
 
+  // 初期化
   updateTotal();
   updatePaymentDisplay();
 });
