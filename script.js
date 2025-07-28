@@ -69,14 +69,16 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // 決済ボタン
-  checkoutBtn.addEventListener('click', () => {
-    const total = Number(grandTotalEl.textContent);
-    if (!isNaN(total) && total !== 0) {
-      savePayment(total);
-      resetInputs();
-      alert('決済完了しました！');
-    } 
-  });
+ checkoutBtn.addEventListener('click', () => {
+  const total = Number(grandTotalEl.textContent);
+  if (!isNaN(total)) {  // ゼロやマイナスもOK
+    savePayment(total);
+    resetInputs();
+    alert('決済を反映しました');
+  } else {
+    alert('合計が正しくありません');
+  }
+});
 
   // リセットボタン（確認ダイアログ付き）
   resetBtn.addEventListener('click', () => {
