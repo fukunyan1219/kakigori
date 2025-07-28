@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>販売カウンター</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
@@ -13,36 +13,36 @@
     <div class="item" data-name="かき氷" data-price="200">
       <div class="info">かき氷（200円）</div>
       <button class="count-btn">＋</button>
-      <input type="number" class="count-input" value="0" min="0">
+      <input type="number" class="count-input" value="0" min="0" />
       <span class="total-price">0</span>円
     </div>
 
     <div class="item" data-name="ミルクかき氷" data-price="250">
       <div class="info">ミルクかき氷（250円）</div>
       <button class="count-btn">＋</button>
-      <input type="number" class="count-input" value="0" min="0">
+      <input type="number" class="count-input" value="0" min="0" />
       <span class="total-price">0</span>円
     </div>
 
     <div class="item" data-name="パンダ焼き" data-price="250">
       <div class="info">パンダ焼き（250円）</div>
       <button class="count-btn">＋</button>
-      <input type="number" class="count-input" value="0" min="0">
+      <input type="number" class="count-input" value="0" min="0" />
       <span class="total-price">0</span>円
     </div>
 
     <p class="grand-total">🔢 合計金額：<span id="grandTotal">0</span>円</p>
 
     <div class="info">
-      ▼ 決済方法：<br>
-      <label><input type="radio" name="payment" value="cash" checked> 現金</label>
-      <label><input type="radio" name="payment" value="paypay"> PayPay</label>
+      ▼ 決済方法：<br />
+      <label><input type="radio" name="payment" value="cash" checked /> 現金</label>
+      <label><input type="radio" name="payment" value="paypay" /> PayPay</label>
     </div>
 
-    <button id="checkoutBtn" class="count-btn">決済</button>
+    <button id="checkoutBtn" class="count-btn">💳 決済</button>
 
-    <div class="grand-total">💰 現金合計：<span id="cashTotal">0</span>円</div>
-    <div class="grand-total">📱 PayPay合計：<span id="paypayTotal">0</span>円</div>
+    <div class="grand-total">💰 現金売上合計：<span id="cashTotal">0</span>円</div>
+    <div class="grand-total">📱 PayPay売上合計：<span id="paypayTotal">0</span>円</div>
   </div>
 
   <script src="script.js"></script>
