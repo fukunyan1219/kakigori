@@ -64,14 +64,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  checkoutBtn.addEventListener('click', () => {
-    const total = Number(grandTotalEl.textContent);
-    if (total !== 0) {  // 0じゃなければ決済OK
-  savePayment(total);
-  resetInputs();
-} else {
-  alert("商品を追加してください！");
-}
+ checkoutBtn.addEventListener('click', () => {
+  const rawText = grandTotalEl.textContent;
+  const normalizedText = rawText.replace('−', '-'); // 全角マイナス→半角マイナス
+  const total = Number(normalizedText);
+  console.log("合計:", total);
+
+  if (!isNaN(total) && total !== 0) {
+    savePayment(total);
+    resetInputs();
+  } else {
+    alert("商品を追加してください！");
+  }
   });
 
   resetBtn.addEventListener('click', () => {
