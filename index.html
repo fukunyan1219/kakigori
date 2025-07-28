@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Festival</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="item" date-name="かき氷" data-price="200">
+            <button class="count-btn">かき氷</button>
+            <div class="info">
+                個数: <input type="number" class="count-input" min="0"> 個<br>
+                売上; <span class="total-price">0</span> 円
+            </div>
+
+        <div class="item" date-name="ミルクかき氷" data-price="250">
+            <button class="count-btn">ミルクかき氷</button>
+            <div class="info">
+                個数: <input type="number" class="count-input" min="0"> 個<br>
+                売上; <span class="total-price">0</span> 円
+        </div>
+
+        <div class="item" date-name="パンダ焼き" data-price="300">
+            <button class="count-btn">パンダ焼き</button>
+            <div class="info">
+                個数: <input type="number" class="count-input" min="0"> 個<br>
+                売上; <span class="total-price">0</span> 円
+        </div>
+        
+        <div class="grand-total">
+            合計金額: <span id="grandTotal">0</span> 円
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
