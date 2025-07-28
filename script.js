@@ -6,12 +6,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const cashTotalEl = document.getElementById('cashTotal');
   const paypayTotalEl = document.getElementById('paypayTotal');
 
+  // 合計金額の更新
   function updateTotal() {
     let grandTotal = 0;
     items.forEach(item => {
       const price = Number(item.dataset.price);
       const input = item.querySelector('.count-input');
-      const count = Number(input.value) || 0;
+      let count = Number(input.value);
+      if (isNaN(count)) count = 0;
       const total = price * count;
       item.querySelector('.total-price').textContent = total;
       grandTotal += total;
@@ -19,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     grandTotalEl.textContent = grandTotal;
   }
 
+  // 売上保存と表示更新
   function savePayment(grandTotal) {
     const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
     const key = paymentMethod === 'cash' ? 'cashTotal' : 'paypayTotal';
@@ -28,11 +31,13 @@ document.addEventListener('DOMContentLoaded', () => {
     updatePaymentDisplay();
   }
 
+  // 累計売上表示更新
   function updatePaymentDisplay() {
     cashTotalEl.textContent = localStorage.getItem('cashTotal') || 0;
     paypayTotalEl.textContent = localStorage.getItem('paypayTotal') || 0;
   }
 
+  // 入力と表示のリセット
   function resetInputs() {
     items.forEach(item => {
       const input = item.querySelector('.count-input');
@@ -42,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     grandTotalEl.textContent = '0';
   }
 
+  // ＋ボタン、−ボタン、入力変更イベント登録
   items.forEach(item => {
     const addBtn = item.querySelector('.add-btn');
     const subBtn = item.querySelector('.sub-btn');
@@ -52,35 +58,31 @@ document.addEventListener('DOMContentLoaded', () => {
       updateTotal();
     });
 
-     subBtn.addEventListener('click', () => {
-    const current = Number(input.value);
-    input.value = current - 1; // マイナスも許可
-    updateTotal();
-  });　
+    subBtn.addEventListener('click', () => {
+      input.value = Number(input.value) - 1; // マイナスも許可
+      updateTotal();
+    });
 
-    
     input.addEventListener('input', () => {
       updateTotal();
     });
   });
 
- checkoutBtn.addEventListener('click', () => {
-  const rawText = grandTotalEl.textContent;
-  const normalizedText = rawText.replace('−', '-'); // 全角マイナス→半角マイナス
-  const total = Number(normalizedText);
-  console.log("合計:", total);
-
-  if (!isNaN(total) && total !== 0) {
-    savePayment(total);
-    resetInputs();
-  } else {
-    alert("商品を追加してください！");
-  }
+  // 決済ボタン
+  checkoutBtn.addEventListener('click', () => {
+    const total = Number(grandTotalEl.textContent);
+    if (!isNaN(total) && total !== 0) {
+      savePayment(total);
+      resetInputs();
+      alert('決済完了しました！');
+    } else {
+      alert('商品を追加してください！');
+    }
   });
 
+  // リセットボタン（確認ダイアログ付き）
   resetBtn.addEventListener('click', () => {
-    const confirmReset = confirm('本当にすべてリセットしますか？');
-    if (confirmReset) {
+    if (confirm('本当にすべてリセットしますか？')) {
       localStorage.removeItem('cashTotal');
       localStorage.removeItem('paypayTotal');
       resetInputs();
@@ -89,6 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // ページ読み込み時に累計表示更新
   updateTotal();
   updatePaymentDisplay();
 });
