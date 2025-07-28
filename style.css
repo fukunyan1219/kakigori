@@ -45,7 +45,7 @@ body {
 }
 
 button .action-btn{
-  display:inline-block;
+  display:flex;
   padding:15px;
   border-radius: 10px;
   border:none;
