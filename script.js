@@ -66,12 +66,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   checkoutBtn.addEventListener('click', () => {
     const total = Number(grandTotalEl.textContent);
-    if (total > 0) {
-      savePayment(total);
-      resetInputs();
-    } else {
-      alert("商品を追加してください！");
-    }
+    if (total !== 0) {  // 0じゃなければ決済OK
+  savePayment(total);
+  resetInputs();
+} else {
+  alert("商品を追加してください！");
+}
   });
 
   resetBtn.addEventListener('click', () => {
