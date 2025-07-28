@@ -1,24 +1,24 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body{
+body {
   background-color: rgb(202, 240, 227);
   padding: 20px;
   font-family: sans-serif;
 }
 
-.container{
+.container {
   margin: auto;
   max-width: 500px;
 }
 
-.count-btn{
+.count-btn {
   font-size: 18px;
   padding: 10px 20px;
-  margin-bottom: 10px;
+  margin: 10px 0;
   width: 100%;
   background-color: rgb(63, 63, 63);
   color: aliceblue;
@@ -27,7 +27,7 @@ body{
   cursor: pointer;
 }
 
-.count-input{
+.count-input {
   display: inline-block;
   padding: 10px;
   font-size: 16px;
@@ -36,12 +36,12 @@ body{
   margin: 5px 10px;
 }
 
-.info{
-  margin: 10px 0 10px 0;
+.info {
+  margin: 10px 0;
   font-size: 16px;
 }
 
-.grand-total{
+.grand-total {
   font-size: 18px;
   margin-top: 20px;
   font-weight: bold;
