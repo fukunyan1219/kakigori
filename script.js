@@ -2,10 +2,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const items = document.querySelectorAll('.item');
   const grandTotalEl = document.getElementById('grandTotal');
   const checkoutBtn = document.getElementById('checkoutBtn');
+  const resetBtn = document.getElementById('resetBtn');
   const cashTotalEl = document.getElementById('cashTotal');
   const paypayTotalEl = document.getElementById('paypayTotal');
 
-  // 合計計算
+  // 🔢 合計金額の更新
   function updateTotal() {
     let grandTotal = 0;
     items.forEach(item => {
@@ -19,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     grandTotalEl.textContent = grandTotal;
   }
 
-  // 売上保存
+  // 💾 売上保存と反映
   function savePayment(grandTotal) {
     const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
     const key = paymentMethod === 'cash' ? 'cashTotal' : 'paypayTotal';
@@ -29,13 +30,13 @@ document.addEventListener('DOMContentLoaded', () => {
     updatePaymentDisplay();
   }
 
-  // 売上表示
+  // 👁 累計売上の表示更新
   function updatePaymentDisplay() {
     cashTotalEl.textContent = localStorage.getItem('cashTotal') || 0;
     paypayTotalEl.textContent = localStorage.getItem('paypayTotal') || 0;
   }
 
-  // 入力リセット
+  // 🔄 入力と表示のリセット
   function resetInputs() {
     items.forEach(item => {
       const input = item.querySelector('.count-input');
@@ -45,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     grandTotalEl.textContent = '0';
   }
 
-  // 各＋ボタン／手入力イベント
+  // ➕ 各商品の加算ボタンと手入力
   items.forEach(item => {
     const button = item.querySelector('.count-btn');
     const input = item.querySelector('.count-input');
@@ -60,34 +61,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 決済ボタンイベント
+  // 💳 決済ボタンイベント
   checkoutBtn.addEventListener('click', () => {
     const total = Number(grandTotalEl.textContent);
     if (total > 0) {
-      savePayment(total);
-      resetInputs();
+      savePayment(total);  // 売上に加算
+      resetInputs();       // 入力リセット
     } else {
       alert("商品を追加してください！");
     }
   });
 
-  // 初期化
-  updateTotal();
-  updatePaymentDisplay();
-
-    // 🧹 リセットボタンの動作
-  const resetBtn = document.getElementById('resetBtn');
+  // 🔄 リセットボタンイベント
   resetBtn.addEventListener('click', () => {
     const confirmReset = confirm('本当にすべてリセットしますか？');
     if (confirmReset) {
-      // ローカルストレージ削除
       localStorage.removeItem('cashTotal');
       localStorage.removeItem('paypayTotal');
-      // 入力値・表示もリセット
       resetInputs();
       updatePaymentDisplay();
       alert('リセットしました');
     }
+  });
 
-
+  // 🔁 初期化
+  updateTotal();
+  updatePaymentDisplay();
 });
