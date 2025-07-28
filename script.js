@@ -74,4 +74,20 @@ document.addEventListener('DOMContentLoaded', () => {
   // 初期化
   updateTotal();
   updatePaymentDisplay();
+
+    // 🧹 リセットボタンの動作
+  const resetBtn = document.getElementById('resetBtn');
+  resetBtn.addEventListener('click', () => {
+    const confirmReset = confirm('本当にすべてリセットしますか？');
+    if (confirmReset) {
+      // ローカルストレージ削除
+      localStorage.removeItem('cashTotal');
+      localStorage.removeItem('paypayTotal');
+      // 入力値・表示もリセット
+      resetInputs();
+      updatePaymentDisplay();
+      alert('リセットしました');
+    }
+
+
 });
